@@ -1,0 +1,86 @@
+<style>
+	td{
+		border:1px solid black;
+	}
+</style>
+
+<?php
+	$con=mysqli_connect("localhost","root","","task");
+	if(!$con)
+	{
+		echo "not connect !!";
+	}
+	if(isset($_POST['fname']))
+	{	
+		$fname=$_POST['fname'];
+		$lname=$_POST['lname'];
+		$email=$_POST['email'];
+		$contact=$_POST['contact'];
+		$contry=$_POST['contry'];
+		$state=$_POST['state'];
+		$city=$_POST['city'];
+		$address=$_POST['address'];
+		$gender=$_POST['gender'];
+		$sql="INSERT INTO `name`(`fname`, `lname`, `email`, `mobile`, `contry`, `state`, `city`, `address`, `gender`) VALUES ('$fname','$lname','$email','$contact','$contry','$state','$city','$address','$gender')";
+		$res=mysqli_query($con,$sql);
+		
+	}
+	
+?>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<div class="container">
+	<form action="home.php" method="POST">
+  <div class="mb-3">
+    <label for="fname" class="form-label">fname</label>
+    <input type="text" class="form-control" id="fname" name="fname"required>
+  </div>
+  <div class="mb-3">
+    <label for="lname" class="form-label">lname</label>
+    <input type="lname" class="form-control" id="lname" name="lname"required>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">email</label>
+    <input type="email" class="form-control" id="email" name="email"required>
+  </div>
+  <div class="mb-3">
+    <label for="mobile" class="form-label">mobile</label>
+    <input type="number" class="form-control" id="contact" MAXLENGTH="10"  name="contact" required>
+  </div>
+  <div class="mb-3">
+	Contry:<div >
+				<select class="w-100" name="contry" id="contry">
+					<option selected>select contry</option>
+					<?php
+						
+					?>
+					<option>india</option>
+				</select>
+			</div>
+	state:<div >
+				<select class="w-100" name="state" id="state">
+					<option selected>select state</option>
+					<option>gujrat</option>
+				</select>
+			</div>
+	city:<div >
+				<select class="w-100" name="city" id="city">
+					<option selected>select city</option>
+					<option>morbi</option>
+				</select>
+			</div>
+  <div>
+  <div class="mb-3 my-4">
+	<textarea name="address">
+	</textarea>
+  </div>
+  <div class="mb-3">
+	<input type="radio" value="male" name="gender">male
+	<input type="radio" value="female" name="gender">female
+	<input type="radio" value="other" name="gender">other
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <a href="display.php" class="btn btn-primary">view</a>
+</form>
+<div>
